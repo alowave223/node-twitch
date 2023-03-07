@@ -110,6 +110,10 @@ export class TwitchApi extends EventEmitter{
 		if(this.access_token){
 			const currentUser = await this.getCurrentUser();
 			this.user = currentUser;
+		}else{
+			this._getAppAccessToken().then((token) => {
+				this.access_token = token;
+			});
 		}
 	}
 

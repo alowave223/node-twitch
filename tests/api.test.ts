@@ -2,6 +2,7 @@ import TwitchApi from "../src/index";
 import client from "../data/apiUser";
 import open from "open";
 import HttpServer from "../test-server/server";
+import { Scope } from "../src/types/scopes";
 
 jest.setTimeout(10000);
 
@@ -144,7 +145,7 @@ describe("unit tests for endpoints requiring user authentication.", () => {
 			client_id: client.client_id,
 			client_secret: client.client_secret,
 			redirect_uri: "http://localhost:" + PORT,
-			scopes: client.scopes
+			scopes: <Scope[]>client.scopes
 		});
 
 		await new Promise( async resolve => {
